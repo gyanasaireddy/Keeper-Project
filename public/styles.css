@@ -103,5 +103,11 @@ form.create-note textarea {
     outline: none;
   }
 
+  .error{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+   margin-left: 25%;
+  }
 
  

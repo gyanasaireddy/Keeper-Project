@@ -5,12 +5,13 @@ import Zoom from "@mui/material/Zoom";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Collapse from "@mui/material/Collapse";
 import Fade from "@mui/material/Fade";
-
+import Alert from "@mui/material/Alert";
 
 function CreateArea(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [initial, setInitial] = useState(false);
+  const [error, setError] = useState(false);
 
   function handleChangeTitle(event) {
     let { value } = event.target;
@@ -23,7 +24,14 @@ function CreateArea(props) {
   }
   function adda(event) {
     event.preventDefault();
-    props.newNote(title, content);
+    if (title != "" && content != "") props.newNote(title, content);
+    else {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 10000);
+    }
+
     setContent("");
     setTitle("");
   }
@@ -54,15 +62,14 @@ function CreateArea(props) {
             value={content}
             minRows={initial ? 3 : 1}
           />
-          <Collapse in={initial} >
+          <Collapse in={initial}>
             <Fade in={initial}>
               <Fab
                 type="submit"
                 style={initial ? {} : { display: "none" }}
                 className="btn liquid"
               >
-                <span style={{display:'flex'}}>
-                  
+                <span style={{ display: "flex" }}>
                   <AddIcon />
                 </span>
               </Fab>
@@ -70,6 +77,13 @@ function CreateArea(props) {
           </Collapse>
         </form>
       </Zoom>
+      <div className="error">
+        <Fade in={error}>
+          <Alert severity="error" size="small" variant="outlined">
+            Enter Title and Content{" "}
+          </Alert>
+        </Fade>
+      </div>
     </div>
   );
 }
