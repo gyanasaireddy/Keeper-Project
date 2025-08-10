@@ -1,18 +1,27 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+} */
 html {
   font-family: "Montserrat", sans-serif;
 }
 body {
   background: #eee;
 background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+overflow: hidden;
 
-  padding: 0 16px;
 }
-
+footer {
+  position: fixed;      /* stays at bottom even when scrolling */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;   /* centers the text horizontally */
+  background-color: transparent; /* or pick a color if needed */
+  padding: 0.5rem 0;
+}
+/* 
 header {
   background-color: #f5ba13;
   margin: auto -16px;
@@ -110,4 +119,4 @@ form.create-note textarea {
    margin-left: 25%;
   }
 
- 
+  */
